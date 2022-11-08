@@ -10,7 +10,7 @@ const Add = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setBook({ ...book, [name]: value });
+    setBook(book => ({ ...book, [name]: value }));
   };
 
   console.log('first book', book);
