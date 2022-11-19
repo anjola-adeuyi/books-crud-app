@@ -45,6 +45,18 @@ app.post('/books', (req, res) => {
 
 // TODO: add a PUT route to update a book
 
+app.delete('/books/:id', (req, res) => {
+  const sql = 'DELETE FROM books WHERE id = ?';
+  connection.query(sql, [req.params.id], (err, result) => {
+    if (err) {
+      res.status(500).send('An error occurred', err);
+    } else {
+      res.send('Book successfully deleted!');
+      res.json(result);
+    }
+  });
+});
+
 app.listen(8800, () => {
   console.log('Server is running on port 8800');
 });
