@@ -45,12 +45,14 @@ app.post('/books', (req, res) => {
 // TODO: add a PUT route to update a book
 
 app.delete('/books/:id', (req, res) => {
+  const bookId = req.params.id;
   const sql = 'DELETE FROM books WHERE id = ?';
-  connection.query(sql, [req.params.id], (err, result) => {
+
+  connection.query(sql, [bookId], (err, data) => {
     if (err) {
       res.status(500).json('An error occurred', err);
     } else {
-      res.json(result);
+      res.json('Book successfully deleted!');
     }
   });
 });
