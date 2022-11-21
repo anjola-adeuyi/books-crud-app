@@ -18,6 +18,21 @@ const Books = () => {
     fetchBooks();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(`http://localhost:8800/books/${id}`);
+      window.location.reload();
+
+      console.log('second response', response);
+
+      // setBooks((books) => books.filter((book) => book.id !== id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  console.log('books', books);
+
   return (
     <div>
       <h1>Jola Books Shop</h1>
@@ -36,7 +51,12 @@ const Books = () => {
             <h2>{book?.title}</h2>
             <p>{book?.desc}</p>
             <span>{book?.price}</span>
-            <button className="delete">Delete</button>
+            <button
+              className="delete"
+              onClick={() => handleDelete(book?.id)}
+            >
+              Delete
+            </button>
             <button className="update">Update</button>
           </div>
         ))}

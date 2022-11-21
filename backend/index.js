@@ -50,7 +50,7 @@ app.delete('/books/:id', (req, res) => {
 
   connection.query(sql, [bookId], (err, data) => {
     if (err) {
-      res.status(500).json('An error occurred', err);
+      res.json('An error occurred', err);
     } else {
       res.json('Book successfully deleted!');
     }
