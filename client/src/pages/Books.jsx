@@ -36,11 +36,18 @@ const Books = () => {
             <h2>{book?.title}</h2>
             <p>{book?.desc}</p>
             <span>{book?.price}</span>
+            <button className="delete">Delete</button>
+            <button className="update">Update</button>
           </div>
         ))}
       </div>
-      <button>
-        <Link to="/add">Add Book</Link>
+      <button className="add-btn">
+        <Link
+          to="/add"
+          style={{ textDecoration: 'none', color: 'white' }}
+        >
+          Add Book
+        </Link>
       </button>
     </div>
   );
