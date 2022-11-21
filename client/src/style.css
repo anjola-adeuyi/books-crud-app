@@ -8,4 +8,17 @@
 }
 
 .books {
+  display: flex;
+}
+
+.book {
+  flex: 1;
+}
+
+img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  background-color: brown;
+  color: white;
 }

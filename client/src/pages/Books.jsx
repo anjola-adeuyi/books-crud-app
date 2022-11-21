@@ -1,41 +1,49 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Books = () => {
-  const [books, setBooks] = React.useState([])
+  const [books, setBooks] = React.useState([]);
 
   React.useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('http://localhost:8800/books')
+        const response = await axios.get('http://localhost:8800/books');
         console.log('first response', response);
-        setBooks(response.data)
+        setBooks(response.data);
       } catch (error) {
         console.error(error);
       }
-    }
-    fetchBooks()
+    };
+    fetchBooks();
   }, []);
 
   return (
     <div>
       <h1>Jola Books Shop</h1>
-      <ul>
+      <div className="books">
         {books.map((book) => (
-          <li key={book?.id}>
-            {book?.cover && <img src={book?.cover} alt={book?.title} />}
+          <div
+            key={book?.id}
+            className="book"
+          >
+            {book?.cover && (
+              <img
+                src={book?.cover}
+                alt={''}
+              />
+            )}
             <h2>{book?.title}</h2>
             <p>{book?.desc}</p>
             <span>{book?.price}</span>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
       <button>
         <Link to="/add">Add Book</Link>
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Books
+export default Books;
