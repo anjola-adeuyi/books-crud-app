@@ -20,12 +20,12 @@ app.get('/', (req, res) => {
 
 app.get('/books', (req, res) => {
   const sql = 'SELECT * FROM books';
-  connection.query(sql, (err, rows) => {
-    console.log('rows', rows, err);
+  connection.query(sql, (err, data) => {
+    console.log('rows', data, err);
     if (err) {
-      res.status(500).send('An error occurred', err);
+      return res.json(err);
     } else {
-      res.json(rows);
+      return res.json(data);
     }
   });
 });
@@ -33,12 +33,11 @@ app.get('/books', (req, res) => {
 app.post('/books', (req, res) => {
   const sql = 'INSERT INTO books (`title`, `desc`, `price`, `cover`) VALUES (?)';
   const values = [req.body.title, req.body.desc, req.body.price, req.body.cover];
-  connection.query(sql, [values], (err, result) => {
+  connection.query(sql, [values], (err, data) => {
     if (err) {
-      res.status(500).send('An error occurred', err);
+      return res.json(err);
     } else {
-      res.send('Book successfully added!');
-      res.json(result);
+      return res.json('Book successfully added!');
     }
   });
 });
@@ -49,9 +48,8 @@ app.delete('/books/:id', (req, res) => {
   const sql = 'DELETE FROM books WHERE id = ?';
   connection.query(sql, [req.params.id], (err, result) => {
     if (err) {
-      res.status(500).send('An error occurred', err);
+      res.status(500).json('An error occurred', err);
     } else {
-      res.send('Book successfully deleted!');
       res.json(result);
     }
   });

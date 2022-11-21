@@ -14,10 +14,11 @@ const Add = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setBook(book => ({ ...book, [name]: value }));
+    setBook((book) => ({ ...book, [name]: value }));
   };
 
-  const handleClick = async () => {
+  const handleClick = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8800/books', book);
       navigate('/');
@@ -32,13 +33,33 @@ const Add = () => {
   return (
     <div>
       <h1>Add Book</h1>
-      <input type="text" placeholder="Title" onChange={handleChange} name="title" />
-      <input type="text" placeholder="Description" onChange={handleChange} name="desc" />
-      <input type="number" placeholder="Price" onChange={handleChange} name="price" />
-      <input type="text" placeholder="Cover" onChange={handleChange} name="cover" />
+      <input
+        type="text"
+        placeholder="Title"
+        onChange={handleChange}
+        name="title"
+      />
+      <input
+        type="text"
+        placeholder="Description"
+        onChange={handleChange}
+        name="desc"
+      />
+      <input
+        type="number"
+        placeholder="Price"
+        onChange={handleChange}
+        name="price"
+      />
+      <input
+        type="text"
+        placeholder="Cover"
+        onChange={handleChange}
+        name="cover"
+      />
       <button onClick={handleClick}>Add</button>
     </div>
-  )
-}
+  );
+};
 
-export default Add
+export default Add;
