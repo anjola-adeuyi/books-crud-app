@@ -57,7 +57,12 @@ const Add = () => {
         onChange={handleChange}
         name="cover"
       />
-      <button onClick={handleClick}>Add</button>
+      <button
+        onClick={handleClick}
+        className="add-btn"
+      >
+        Add
+      </button>
     </div>
   );
 };

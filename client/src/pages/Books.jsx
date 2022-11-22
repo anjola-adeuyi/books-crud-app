@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+// img url = https://source.unsplash.com/random/?Cryptocurrency&1
+// img url = https://source.unsplash.com/random/
+
 const Books = () => {
   const [books, setBooks] = React.useState([]);
 
@@ -21,11 +24,10 @@ const Books = () => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(`http://localhost:8800/books/${id}`);
-      window.location.reload();
 
       console.log('second response', response);
 
-      // setBooks((books) => books.filter((book) => book.id !== id));
+      response.status === 200 && setBooks((books) => books.filter((book) => book.id !== id));
     } catch (error) {
       console.error(error);
     }
