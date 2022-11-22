@@ -42,8 +42,6 @@ app.post('/books', (req, res) => {
   });
 });
 
-// TODO: add a PUT route to update a book
-
 app.delete('/books/:id', (req, res) => {
   const bookId = req.params.id;
   const sql = 'DELETE FROM books WHERE id = ?';
@@ -53,6 +51,21 @@ app.delete('/books/:id', (req, res) => {
       res.json('An error occurred', err);
     } else {
       res.json('Book successfully deleted!');
+    }
+  });
+});
+
+// TODO: add a PUT route to update a book
+app.put('/books/:id', (req, res) => {
+  const bookId = req.params.id;
+  const sql = 'UPDATE books SET `title` = ?, `desc` = ?, `price` = ?, `cover` = ? WHERE id = ?';
+  const values = [req.body.title, req.body.desc, req.body.price, req.body.cover];
+
+  connection.query(sql, [...values, bookId], (err, data) => {
+    if (err) {
+      res.json('An error occurred');
+    } else {
+      res.json('Book successfully updated!');
     }
   });
 });

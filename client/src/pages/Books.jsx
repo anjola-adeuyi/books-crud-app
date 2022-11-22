@@ -59,11 +59,18 @@ const Books = () => {
             >
               Delete
             </button>
-            <button className="update">Update</button>
+            <button className="update">
+              <Link
+                to={`/update/${book?.id}`}
+                style={{ textDecoration: 'none', color: '#8b8bea' }}
+              >
+                Update
+              </Link>
+            </button>
           </div>
         ))}
       </div>
-      <button className="add-btn">
+      <button className="add-btn btn">
         <Link
           to="/add"
           style={{ textDecoration: 'none', color: 'white' }}

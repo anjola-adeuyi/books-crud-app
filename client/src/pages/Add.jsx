@@ -31,8 +31,8 @@ const Add = () => {
   console.log('first book', book);
 
   return (
-    <div>
-      <h1>Add Book</h1>
+    <div className="form">
+      <h1>Add New Book</h1>
       <input
         type="text"
         placeholder="Title"
@@ -59,7 +59,7 @@ const Add = () => {
       />
       <button
         onClick={handleClick}
-        className="add-btn"
+        className="add-btn btn"
       >
         Add
       </button>

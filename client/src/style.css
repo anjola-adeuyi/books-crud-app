@@ -47,12 +47,32 @@ img {
   color: rgb(139, 139, 234);
 }
 
-.add-btn {
+.btn {
   border: none;
   margin: 30px 0;
   padding: 10px 20px;
   cursor: pointer;
+  color: white;
+}
+
+.add-btn {
   border: 1px solid rgb(204, 204, 243);
   background-color: rgb(139, 139, 234);
-  color: white;
+}
+
+.update-btn {
+  border: 1px solid rgb(243, 217, 200);
+  background-color: rgb(244, 142, 74);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid rgb(204, 204, 243);
+  width: 260px;
 }
